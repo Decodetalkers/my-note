@@ -30,3 +30,15 @@ menu.append(Some("Quit"),Some('app.quit'));
 ```rust
 let quit = gio::SimpleAction::new("quit",None);
 ```
+
+### 匿名函数与glib::clone!
+
+众所周知，rust的匿名函数对于外部变量一般只有访问的权限，无权更改，但是对于gtk-rs里的东西，有它的trait，就能使用
+
+```rust
+glib::clone!(@weak window => move |_|());
+```
+
+### 大量的引用
+
+基本都是引用类型
