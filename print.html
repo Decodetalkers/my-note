@@ -1,0 +1,622 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> Chapter 2</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> Chapter 3</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> Chapter 4</a></li><li class="chapter-item expanded "><a href="speech.html"><strong aria-hidden="true">5.</strong> Speech api</a></li><li class="chapter-item expanded "><a href="gtk_rs.html"><strong aria-hidden="true">6.</strong> Rust rs</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+<p>类别欧式空间</p>
+<p>层次聚类</p>
+<p>K-means</p>
+<p>BFR方法</p>
+<p>分类和聚类</p>
+<h2 id="语言模型"><a class="header" href="#语言模型">语言模型</a></h2>
+<p>上下文是否贴切</p>
+<p>组合数</p>
+<p>N-gram(参数可以用最大似然估计获取）</p>
+<p>迷惑度：预测下一条语言的能力</p>
+<p>Backoff</p>
+<p>扣掉正常的句子</p>
+<h2 id="正向匹配分词"><a class="header" href="#正向匹配分词">正向匹配分词</a></h2>
+<p>双向分配法</p>
+<p>词网格,给出了一个字符串全部接分可能性</p>
+<p>分词歧义</p>
+<p>新词，缩写</p>
+<h2 id="句法分析"><a class="header" href="#句法分析">句法分析</a></h2>
+<p>CFG 上下文无关</p>
+<p>移进-规约方法</p>
+<h2 id="max-margin-损失函数"><a class="header" href="#max-margin-损失函数">Max-margin 损失函数</a></h2>
+<p>雅科比矩阵</p>
+<h2 id="计算图与反向传播"><a class="header" href="#计算图与反向传播">计算图与反向传播</a></h2>
+<p>##深度学习</p>
+<p>图像技术</p>
+<p>paradigm</p>
+<p>词向量</p>
+<h2 id="cnn参数"><a class="header" href="#cnn参数">cnn参数</a></h2>
+<h2 id="rnn-循环神经网络"><a class="header" href="#rnn-循环神经网络">RNN (循环神经网络)</a></h2>
+<p>82年Hopfield神经网络，模拟人类记忆模型</p>
+<p>RNN构建。对于序列有优势，特点是本身存在自循环</p>
+<p>GRU:门限循环单元</p>
+<h2 id="注意力机制"><a class="header" href="#注意力机制">注意力机制</a></h2>
+<p>源于神经科学</p>
+<p>匹配</p>
+<p>隐藏层。最佳答案检测</p>
+<pre><code class="language-mermaid">
+graph TD
+
+A --&gt; B
+
+</code></pre>
+<p>用了DDN后提升</p>
+<h2 id="信息抽取中的主要任务"><a class="header" href="#信息抽取中的主要任务">信息抽取中的主要任务</a></h2>
+<p>MUC(1)</p>
+<p>概念模型</p>
+<p>MET
+主要对英语，汉语，阿拉伯语进行分析</p>
+<h3 id="命名实体识别"><a class="header" href="#命名实体识别">命名实体识别</a></h3>
+<p>给命名里面的东西指定一个实体标记</p>
+<p>最大熵模型</p>
+<p>CRF</p>
+<p>实体链接</p>
+<ul>
+<li>生物医学领域</li>
+</ul>
+<p>关系抽取</p>
+<p>eg: </p>
+<ul>
+<li>比尔盖茨是微软的CEO</li>
+<li>CEO(比尔盖茨，微软)</li>
+</ul>
+<h2 id="复习"><a class="header" href="#复习">复习</a></h2>
+<p>引言：NPL 发展等，歧义，挑战</p>
+<p>文本处理基础</p>
+<ul>
+<li>正则表达式，语料库</li>
+<li>隐马尔可夫模型</li>
+<li>句法分析
+<ul>
+<li>上下文无关</li>
+</ul>
+</li>
+</ul>
+<p>One-hot</p>
+<h1 id="梯度下降法"><a class="header" href="#梯度下降法">梯度下降法</a></h1>
+<h1 id="可视化"><a class="header" href="#可视化">可视化</a></h1>
+<p>通过计算机将数据转换为图形。渲染</p>
+<h1 id="光源"><a class="header" href="#光源">光源</a></h1>
+<p>和入射光有关</p>
+<h1 id="近似衡等变化"><a class="header" href="#近似衡等变化">近似衡等变化</a></h1>
+<p>残差为0</p>
+<p>神经元</p>
+<p>空域注意力</p>
+<p>$$\alpha = softmax(W_{i}a + b_{i})$$</p>
+<h1 id="ispimage-singal-processing"><a class="header" href="#ispimage-singal-processing">ISP(Image Singal Processing)</a></h1>
+<pre><code class="language-mermaid">
+graph TD
+
+Sencor --&gt; BLC --&gt; LensShading --&gt; BPC --&gt; Demosaic --&gt; Bayerdenose --&gt;BPC
+
+Bayerdenose --&gt; test
+
+</code></pre>
+<p>DL for ISP</p>
+<p>PyNET</p>
+<h2 id="deep-learning-for-image-restoration"><a class="header" href="#deep-learning-for-image-restoration">Deep Learning for Image Restoration</a></h2>
+<p>Denosing and super-resolution</p>
+<p>多幅输入平均减少噪声干扰</p>
+<h2 id="semi-coupled-dictionary-learning"><a class="header" href="#semi-coupled-dictionary-learning">Semi-coupled Dictionary Learning</a></h2>
+<p>加权映射</p>
+<p>残差学习学习和深度去噪</p>
+<p>恒等映射</p>
+<p>序列信号, 图像到视频</p>
+<p>导师驱动：改进</p>
+<p>序列建模问题</p>
+<p>长期依赖，必须存在。只要是序列</p>
+<ul>
+<li>截断梯度
+<ul>
+<li>当参数梯度大于一定阈值时候，将它截断为一个较小数值。
+<ul>
+<li>参数更新时候，逐元素阶段Mini-batch</li>
+<li>其他</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>门控训话单元(GRU)
+<ul>
+<li>门机制</li>
+</ul>
+</li>
+</ul>
+<p>banti1,带有Peephole连接的LSTM</p>
+<h2 id="递归神经网络"><a class="header" href="#递归神经网络">递归神经网络</a></h2>
+<ul>
+<li>构造树的方法
+<ul>
+<li>不依赖于数据的树结构</li>
+<li>ss</li>
+<li>dfs</li>
+</ul>
+</li>
+<li>隐形知识：隐含的，潜意识难以表达的
+<ul>
+<li>比如：怎么行走，或者猫和狗的样子有什么不同</li>
+</ul>
+</li>
+<li>明确的、可陈述的知识
+<ul>
+<li>常识性知识</li>
+<li>具体的知识</li>
+</ul>
+</li>
+</ul>
+<p>图神经网络</p>
+<h2 id="image-caption-图像翻译"><a class="header" href="#image-caption-图像翻译">Image Caption 图像翻译</a></h2>
+<p>人骑马
+描述图像内容</p>
+<p><em>before</em>
+$$ h = hanh(Wxh * x + Whh * h)$$</p>
+<p><em>after</em>
+$$ h = hanh(Wxh * x + Whh * h + Wih * v)$$</p>
+<h3 id="datasets"><a class="header" href="#datasets">DataSets</a></h3>
+<ul>
+<li>MS COCO Dataset ---MicroSoft</li>
+</ul>
+<h1 id="视觉处理"><a class="header" href="#视觉处理">视觉处理</a></h1>
+<p>90%信息来自视觉</p>
+<p>CV</p>
+<p>longtail</p>
+<h2 id="深度学习"><a class="header" href="#深度学习">深度学习</a></h2>
+<p>建模方法：神经元，突触</p>
+<p>加权</p>
+<p>手写字符，svn无法识别</p>
+<p>$$ f(u) = e^{\frac{2}{2}}$$</p>
+<p>大于三层就性能炸了</p>
+<p>BP算法收敛速度一般比较慢</p>
+<p>随机优化</p>
+<p>分类问题</p>
+<ul>
+<li>
+<p>两类问题</p>
+</li>
+<li>
+<p>多类问题</p>
+</li>
+</ul>
+<p>随机优化下降</p>
+<table><thead><tr><th>1</th><th>2</th><th>3</th></tr></thead><tbody>
+<tr><td>2</td><td>3</td><td>6</td></tr>
+</tbody></table>
+<p>SGD主流方法</p>
+<p>隐马尔可夫模型</p>
+<p>发射概率</p>
+<p>$$ p(O|Q,\mu) = b_{q1}(O_{1})b_{q2}(O_{2})... $$</p>
+<p>化整为零</p>
+<p>SGD施加动量</p>
+<p>$$ v \leftarrow \alpha v \leftarrow  $$</p>
+<p>卷积核，不是越大越好</p>
+<p>分治+因式分解</p>
+<h1 id="进化生物学"><a class="header" href="#进化生物学">进化生物学</a></h1>
+<h3 id="进化思想"><a class="header" href="#进化思想">进化思想</a></h3>
+<ul>
+<li>演变论</li>
+<li>创世说和不变论</li>
+<li>进化论</li>
+</ul>
+<p><strong>乔治-布丰</strong></p>
+<p><strong>拉马克</strong></p>
+<p>1809年，《动物学的哲学》</p>
+<p>自然选择学说</p>
+<p>分歧时间，保守</p>
+<p>$$ P_{d}=D_{aa}/N_{aa} $$
+$$ K_{aa}=2.3Log_{10}(1-P_{d})/2T $$</p>
+<p>T 为分歧时间</p>
+<p>10<sup>-9</sup>作为分子进化标准速率</p>
+<h3 id="分子进化的中性理论"><a class="header" href="#分子进化的中性理论">分子进化的中性理论</a></h3>
+<p><strong>木村资生</strong></p>
+<p>中性学说无法解释物种形成
+中性学说无法解释分子水平的研究</p>
+<p>分子钟，利用已知的分子系统学数据和古生物数据建立曲线</p>
+<p>系统发生树</p>
+<p>有根树，无根树</p>
+<p>有根树表示了进化的时间顺序,无根树反映了距离（仅仅）</p>
+<p>构建方式：
+确定物种和分子</p>
+<p>人类进化
+南方古猿</p>
+<p>早起智人：尼安得特人，中心于欧洲</p>
+<p>同一地缘地缘说：单一地缘起源说</p>
+<h1 id="记捣鼓python-语音api的过程"><a class="header" href="#记捣鼓python-语音api的过程">记捣鼓python 语音api的过程</a></h1>
+<p>想做一个游戏王的app啥的，flutter上有个讯飞api，但是并不能用</p>
+<p>python是有非常丰富的api，比如speechrecognition。</p>
+<h2 id="安装"><a class="header" href="#安装">安装</a></h2>
+<pre><code class="language-bash">cd ~/pythonproject
+mkdir voice
+cd voicd
+python -m venv snake
+source snake/bin/activate
+</code></pre>
+<p>这部分生成一个新的虚拟环境，然后容器里的pip可能版本低，可以upgrade一下</p>
+<p>之后有需要用到一个调用麦克风的库，这个pip库需要在安装时候make，是个cpython项目，先得把它需要的头文件准备好。我是debian，其他发行版看着办</p>
+<pre><code class="language-bash">sudo apt install portaudio19-dev
+pip install pyaudio
+</code></pre>
+<h2 id="使用"><a class="header" href="#使用">使用</a></h2>
+<p>然后就可以写代码了，无论是写py文件还是shell随便。</p>
+<p>这个语音是英文的语音api，所以需要准备英文的wav。我事先在github下了一个</p>
+<p>https://github.com/realpython/python-speech-recognition</p>
+<pre><code class="language-python3">import speech_recognition as sr
+
+r = sr.Recognizer
+harvard = sr.AudioFile('harvard.wav')
+with harvard as source:
+    audio = r.record(source)
+
+r.recognize_google(audio)
+</code></pre>
+<h2 id="麦克风"><a class="header" href="#麦克风">麦克风</a></h2>
+<p>还是当前环境，</p>
+<pre><code class="language-bash">python -m speech_recognition
+</code></pre>
+<p>然后就可以对话啦</p>
+<h1 id="gtk-rs"><a class="header" href="#gtk-rs">GTK-rs</a></h1>
+<p>我之前有过使用gtk-rs，但是在一次事故中东西都没有了。我一直认为这个库特别屑，但是重新看了并不是这么一回事情。</p>
+<p>接下来我想到哪里写道哪里</p>
+<h2 id="基本组件"><a class="header" href="#基本组件">基本组件</a></h2>
+<p>GTK-rs和gtk本身的组件是一致的，</p>
+<ul>
+<li>gtk::Application
+<ul>
+<li>Gtk 的事件，用户绑定各种活动</li>
+</ul>
+</li>
+<li>gtk::ApplicationWindow
+<ul>
+<li>定义了一个 活动窗口需要，是核心</li>
+</ul>
+</li>
+<li>gtk::Box
+<ul>
+<li>布局</li>
+</ul>
+</li>
+<li>gio::Menu
+<ul>
+<li>菜单，需要通过application加上。application里有俩菜单，一个是<em>set_app_menu</em>,定义了&quot;应用菜单&quot;，另一个是set_menu_bar,这是个菜单，没有名字。</li>
+</ul>
+</li>
+</ul>
+<h2 id="事件"><a class="header" href="#事件">事件</a></h2>
+<p>gtk-rust的事件相当有趣。其中一个重要的库是gui。这个和我之前用的tui库非常想，通过名字查找组件可以获取注册的组件绑定，这个需要通过注册中以特定语法注册才会访问比如menu</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>menu.append(Some(&quot;Quit&quot;),Some('app.quit'));
+<span class="boring">}
+</span></code></pre></pre>
+<p>这样定义后就可以通过app.后面的字段访问</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let quit = gio::SimpleAction::new(&quot;quit&quot;,None);
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="匿名函数与glibclone"><a class="header" href="#匿名函数与glibclone">匿名函数与glib::clone!</a></h3>
+<p>众所周知，rust的匿名函数对于外部变量一般只有访问的权限，无权更改，但是对于gtk-rs里的东西，有它的trait，就能使用</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>glib::clone!(@weak window =&gt; move |_|());
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="大量的引用"><a class="header" href="#大量的引用">大量的引用</a></h3>
+<p>基本都是引用类型</p>
+<h3 id="资源管理"><a class="header" href="#资源管理">资源管理</a></h3>
+<p>qt有个qrc，qt也有类似的管理工具。</p>
+<p>资源管理如下</p>
+<ul>
+<li>Cargo.toml</li>
+<li>target</li>
+<li>src
+<ul>
+<li>main.rs</li>
+<li>resources
+<ul>
+<li>a.png</li>
+<li>b.png</li>
+<li>resources.gresource.xml</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>resources.gresource.xml 里是这种管理模式</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;gresources&gt;
+    &lt;gresource prefix=&quot;/resources&quot;&gt;
+        &lt;file&gt;a.png&lt;/file&gt;
+        &lt;file&gt;b.png&lt;/file&gt;
+    &lt;/gresource&gt;
+&lt;/gresources&gt;
+</code></pre>
+<p>这样定义后就可以通过pixmap引入icon编译了</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use gtk::gdk_pixbuf::Pixbuf;
+let img = Pixbuf::from_resouce(&quot;/resources/a.png&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>同时有另一种不定义资源的方式实时获取指定目录下的icon</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use gtk::gdk_pixbuf::Pixbuf
+if let Ok(icon) = &amp;Pixbuf::from_file(&quot;./youxie.jpeg&quot;) {
+    //这个window是ApplicationWindow, set_icon是设置dock栏图标
+    window.set_icon(Some(icon));
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="设置expand"><a class="header" href="#设置expand">设置expand</a></h3>
+<p>不同的组件有不同的方法设置expand</p>
+<h4 id="overlay"><a class="header" href="#overlay">overlay</a></h4>
+<p>Overlay是一个漂浮组件，可以漂浮于widget上方。</p>
+<p>任何组件都可以用box设置</p>
+<p>方法一是居中它设置需要访问组件的地址的引用，以overlay为例子</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let overlay = gtk::Overlay::new;
+let overlay_text = gtk::Label::new(Some(&quot;0&quot;));
+overlay_text.setwidget_name(&quot;overlay_label&quot;);
+overlay_text.set_halign(gtk::Align::End);
+overlay_text.set_valign(gtk::Align::Start);
+let hbox = gtk::Box::new(gtk::Orientation::Horizontal, 0);
+let but1 = gtk::Button::with_label(&quot;Click me!&quot;);
+let but2 = gtk::Button::with_label(&quot;Or me!&quot;);
+let but3 = gtk::Button::with_label(&quot;Why not me?&quot;);
+hbox.add(&amp;but1);
+hbox.add(&amp;but2);
+hbox.add(&amp;but3);
+hbox.set_child_expand(&amp;but1,true);
+hbox.set_child_expand(&amp;but2,true);
+hbox.set_child_expand(&amp;but3,true);
+<span class="boring">}
+</span></code></pre></pre>
+<p>另一种是在add时候就设置expand和fill</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let v_box = gtk::Box::new(gtk::Orientation::Vertical, 10);
+let label = gtk::Label::new(Some(&quot;Nothing happened yet&quot;));
+let switch = gtk::Switch::new();
+// a is widget, b is expand c is fill,d is padding
+v_box.pack_start(&amp;label, true, true, 0);
+v_box.pack_start(&amp;switch, true, true, 0);
+<span class="boring">}
+</span></code></pre></pre>
+<p>如你所见，add时候可以用pack_start来设置更多参数</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
