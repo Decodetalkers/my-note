@@ -85,3 +85,46 @@ if let Ok(icon) = &Pixbuf::from_file("./youxie.jpeg") {
     window.set_icon(Some(icon));
 }
 ```
+
+### 设置expand
+
+不同的组件有不同的方法设置expand
+
+#### overlay
+
+Overlay是一个漂浮组件，可以漂浮于widget上方。
+
+任何组件都可以用box设置
+
+方法一是居中它设置需要访问组件的地址的引用，以overlay为例子
+
+```rust
+let overlay = gtk::Overlay::new;
+let overlay_text = gtk::Label::new(Some("0"));
+overlay_text.setwidget_name("overlay_label");
+overlay_text.set_halign(gtk::Align::End);
+overlay_text.set_valign(gtk::Align::Start);
+let hbox = gtk::Box::new(gtk::Orientation::Horizontal, 0);
+let but1 = gtk::Button::with_label("Click me!");
+let but2 = gtk::Button::with_label("Or me!");
+let but3 = gtk::Button::with_label("Why not me?");
+hbox.add(&but1);
+hbox.add(&but2);
+hbox.add(&but3);
+hbox.set_child_expand(&but1,true);
+hbox.set_child_expand(&but2,true);
+hbox.set_child_expand(&but3,true);
+```
+
+另一种是在add时候就设置expand和fill
+
+```rust
+let v_box = gtk::Box::new(gtk::Orientation::Vertical, 10);
+let label = gtk::Label::new(Some("Nothing happened yet"));
+let switch = gtk::Switch::new();
+// a is widget, b is expand c is fill,d is padding
+v_box.pack_start(&label, true, true, 0);
+v_box.pack_start(&switch, true, true, 0);
+```
+
+如你所见，add时候可以用pack_start来设置更多参数
