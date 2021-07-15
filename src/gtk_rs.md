@@ -42,3 +42,46 @@ glib::clone!(@weak window => move |_|());
 ### 大量的引用
 
 基本都是引用类型
+
+### 资源管理
+
+qt有个qrc，qt也有类似的管理工具。
+
+资源管理如下
+
+* Cargo.toml
+* target
+* src
+    * main.rs
+    * resources
+        * a.png
+        * b.png
+        * resources.gresource.xml
+
+resources.gresource.xml 里是这种管理模式
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/resources">
+        <file>a.png</file>
+        <file>b.png</file>
+    </gresource>
+</gresources>
+```
+
+这样定义后就可以通过pixmap引入icon编译了
+```rust
+use gtk::gdk_pixbuf::Pixbuf;
+let img = Pixbuf::from_resouce("/resources/a.png");
+```
+
+同时有另一种不定义资源的方式实时获取指定目录下的icon
+
+```rust
+use gtk::gdk_pixbuf::Pixbuf
+if let Ok(icon) = &Pixbuf::from_file("./youxie.jpeg") {
+    //这个window是ApplicationWindow, set_icon是设置dock栏图标
+    window.set_icon(Some(icon));
+}
+```
