@@ -131,6 +131,8 @@ v_box.pack_start(&switch, true, true, 0);
 
 #### 函数式的表达方法
 
+见 dialog_async.rs
+
 之前tui有遇到函数式的表达方法，也许叫传递链更加标准？这种方法可以很爽的构建一个组件，比如
 
 ```rust
@@ -171,6 +173,8 @@ async fn dialog<W: IsA<gtk::Window>>(window: W){
 这样所有和window一样的或者变异的，都可以被输入
 
 #### Async
+
+详细信息可以建 dialog_async.rs
 
 异步，
 
