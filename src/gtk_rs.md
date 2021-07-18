@@ -128,3 +128,58 @@ v_box.pack_start(&switch, true, true, 0);
 ```
 
 如你所见，add时候可以用pack_start来设置更多参数
+
+#### 函数式的表达方法
+
+之前tui有遇到函数式的表达方法，也许叫传递链更加标准？这种方法可以很爽的构建一个组件，比如
+
+```rust
+let button = gtk::ButtonBuilder::new()
+    .label("Open Dialog")
+    .halign(gtk::Align::Center)
+    .valign(gtk::Align::Center)
+    .visible(true)
+    .build();
+```
+
+但是布局的话有遇到很多奇怪的问题，暂时不是很推荐这样布局？大概？
+
+```rust
+let window = gtk::ApplicationWindowBuilder::new()
+    .application(application)
+    .title("Dialog Async")
+    .default_width(350)
+    .default_height(70)
+    .child(&button)
+    .visible(true)
+    .build();
+```
+
+加单个是没啥问题的。所有组件都有builder的函数，可以快速构建一个组件
+
+#### Trait
+
+众所周知，rust中trait是很重要的东西，没有trait，函数复用，设计，泛型都会遇到极大问题。gtk里面有个相当优秀的函数应对泛型（大概
+
+比如
+
+```rust
+
+async fn dialog<W: IsA<gtk::Window>>(window: W){
+}
+```
+这样所有和window一样的或者变异的，都可以被输入
+
+#### Async
+
+异步，
+
+```
+button.connect_clicked(glib::clone!(@weak window => move |_| {
+    glib::MainContext::default().spawn_local(dialog(window));
+}));
+```
+
+启动dialog(window)是个异步函数，可以被绑定到button上，在button没有结束之前不会阻塞，但是button不会响应任何需求;
+
+准确来说是整个windows都被禁止相应新事件了，但是window的拖动更改大小不受影响。
